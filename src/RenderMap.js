@@ -5,23 +5,23 @@ function RenderMap(props) {
   const [colors, setColors] = useState(Object.assign({}, props.colors));
 
   const handleGeometryClick = index => {
-    var identifier = props.geometry.features[index].properties[props.identifier];
-    console.log(props.label + " " + identifier);
+    var index_identifier = props.geometry.features[index].properties[props.identifier];
+    console.log(props.label + " " + index_identifier);
   }
 
   const handleMouseOver = index => {
-    var identifier = props.geometry.features[index].properties[props.identifier];
-    colors[identifier] = "#5522aa";
+    var index_identifier = props.geometry.features[index].properties[props.identifier];
+    colors[index_identifier] = "#5522aa";
     setColors(Object.assign({}, colors));
   }
 
   const handleMouseOut = index => {
-    var identifier = props.geometry.features[index].properties[props.identifier];
-    colors[identifier] = props.colors[identifier];
+    var index_identifier = props.geometry.features[index].properties[props.identifier];
+    colors[index_identifier] = props.colors[index_identifier];
     setColors(Object.assign({}, colors));
   }
 
-  let width = 960, height = 700;
+  let width = 960, height = 500;
   let projection = geoMercator().scale(1).fitSize([width, height], props.geometry);
   let path = geoPath().projection(projection);
 
